@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useProducts } from "../model/useProducts";
+import { ProductCard } from "@/entities/product/ui/ProductCard";
 
 export const ProductList = () => {
   const { data, error, isLoading } = useProducts();
@@ -17,12 +17,7 @@ export const ProductList = () => {
   return (
     <div>
       {data?.map((product) => (
-        <div key={product.id}>
-          <Link href={`/products/${product.id}`}>
-            <p>Name: {product.name}</p>
-          </Link>
-          <p>Price: {product.price}</p>
-        </div>
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );

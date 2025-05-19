@@ -19,6 +19,7 @@ export const ProductDetail = ({ productId }: ProductDetailProps) => {
 
   return (
     <div>
+      {!!data?.image_url.length && <img src={data.image_url} alt="picture" />}
       <h1>{data?.name}</h1>
       <p>Price: {data?.price}</p>
     </div>
