@@ -7,19 +7,27 @@ type ProductCardProps = {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div style={{ border: "1px solid white" }}>
-      <Link href={`/products/${product.id}`}>
-        {!!product.image_url.length && (
-          <img
-            src={product.image_url}
-            width={150}
-            height={200}
-            alt="product image"
-          />
-        )}
-        <h3>{product.name}</h3>
-        <p>${product.price}</p>
-      </Link>
-    </div>
+    <Link href={`/products/${product.id}`}>
+      <div className={"bg-white rounded-3xl p-4"}>
+        <div
+          className={
+            "aspect-square bg-black/10 rounded-2xl flex items-center justify-center overflow-hidden"
+          }
+        >
+          {!!product.image_url.length && (
+            <img
+              src={product.image_url}
+              alt={product.name}
+              className={"w-full h-full object-contain"}
+            />
+          )}
+        </div>
+
+        <div className={"pt-4"}>
+          <p className={"text-lg font-semibold"}>{product.name}</p>
+          <p className={"mt-2 text-xl font-bold"}>${product.price}</p>
+        </div>
+      </div>
+    </Link>
   );
 };

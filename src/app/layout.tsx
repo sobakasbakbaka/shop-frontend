@@ -6,7 +6,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
       <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <div className={"max-w-[1240px] mx-auto"}>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </div>
       </body>
     </html>
   );
