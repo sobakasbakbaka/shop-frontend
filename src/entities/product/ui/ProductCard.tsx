@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Product } from "../model/types";
+import Image from "next/image";
 
 type ProductCardProps = {
   product: Product;
@@ -15,14 +16,15 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           }
         >
           {!!product.image_url.length && (
-            <img
+            <Image
               src={product.image_url}
               alt={product.name}
+              width={256}
+              height={256}
               className={"w-full h-full object-contain"}
             />
           )}
         </div>
-
         <div className={"pt-4"}>
           <p className={"text-lg font-semibold"}>{product.name}</p>
           <p className={"mt-2 text-xl font-bold"}>${product.price}</p>
