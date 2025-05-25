@@ -8,5 +8,7 @@ export const useMe = () => {
       const { data } = await axiosInstance("/me");
       return data;
     },
+    retry: false,
+    staleTime: 0,
   });
 };

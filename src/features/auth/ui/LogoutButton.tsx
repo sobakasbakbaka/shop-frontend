@@ -10,6 +10,7 @@ export const LogoutButton = () => {
   const mutation = useMutation({
     mutationFn: logout,
     onSuccess: () => {
+      queryClient.setQueryData(["me"], null);
       queryClient.invalidateQueries({ queryKey: ["me"] });
     },
   });
