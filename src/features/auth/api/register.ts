@@ -3,6 +3,7 @@ import { axiosInstance } from "@/shared/api/axiosInstance";
 type RegisterDto = {
   email: string;
   password: string;
+  user_name: string;
 };
 
 export const register = async (

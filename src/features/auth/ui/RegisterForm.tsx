@@ -11,6 +11,7 @@ export const RegisterForm = () => {
   const queryClient = useQueryClient();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
   const router = useRouter();
 
   const { mutate, isPending, error } = useMutation({
@@ -23,10 +24,15 @@ export const RegisterForm = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    mutate({ email, password });
+    mutate({ email, password, user_name: userName });
   };
   return (
     <form onSubmit={handleSubmit} className={"flex flex-col gap-4 w-[300px]"}>
+      <Input
+        placeholder={"User Name"}
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
+      />
       <Input
         placeholder={"Email"}
         value={email}

@@ -13,7 +13,7 @@ export const Header = () => {
       <div className={"flex gap-4 items-center"}>
         {data ? (
           <>
-            <span>{data.email}</span>
+            <span>{data.user_name}</span>
             <LogoutButton />
           </>
         ) : (
