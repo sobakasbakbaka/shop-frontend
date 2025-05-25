@@ -15,7 +15,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 export const Button = (props: ButtonProps) => {
-  const { children, variant = "filled", className, disabled } = props;
+  const { children, variant = "filled", className, disabled, onClick } = props;
 
   return (
     <button
@@ -25,6 +25,7 @@ export const Button = (props: ButtonProps) => {
         (variant === "outline" || variant === "filled") && "py-2 rounded"
       )}
       disabled={disabled}
+      onClick={onClick}
     >
       {children}
     </button>

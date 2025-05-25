@@ -5,7 +5,7 @@ export const useMe = () => {
   return useQuery({
     queryKey: ["me"],
     queryFn: async () => {
-      const data = await axiosInstance("/me");
+      const { data } = await axiosInstance("/me");
       return data;
     },
   });
