@@ -5,6 +5,8 @@ import { useMutation } from "@tanstack/react-query";
 import { useAuthStore } from "../model/authStore";
 import { login } from "../api/login";
 import { useRouter } from "next/navigation";
+import { Input } from "@/shared/ui/input";
+import { Button } from "@/shared/ui/button";
 
 export const LoginForm = () => {
   const setToken = useAuthStore((s) => s.setToken);
@@ -27,25 +29,18 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className={"flex flex-col gap-4 w-[300px]"}>
-      <input
-        className={"border p-2 rounded"}
+      <Input
         placeholder={"Email"}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <input
-        className={"border p-2 rounded"}
+      <Input
         type={"password"}
         placeholder={"Password"}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button
-        className={"bg-black text-white py-2 rounded"}
-        disabled={isPending}
-      >
-        {isPending ? "Входим..." : "Войти"}
-      </button>
+      <Button disabled={isPending}>{isPending ? "Входим..." : "Войти"}</Button>
       {error && <p className={"text-red-500"}>Ошибка авторизации</p>}
     </form>
   );
