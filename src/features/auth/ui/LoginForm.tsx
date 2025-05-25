@@ -6,6 +6,7 @@ import { login } from "../api/login";
 import { useRouter } from "next/navigation";
 import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
+import Link from "next/link";
 
 export const LoginForm = () => {
   const queryClient = useQueryClient();
@@ -39,6 +40,12 @@ export const LoginForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <span className={"text-xs"}>
+        <Link href={"/register"} className={"underline"}>
+          Зарегистрируйтесь
+        </Link>{" "}
+        если у вас нет аккаунта
+      </span>
       <Button disabled={isPending}>{isPending ? "Входим..." : "Войти"}</Button>
       {error && <p className={"text-red-500"}>Ошибка авторизации</p>}
     </form>
