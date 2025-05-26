@@ -1,5 +1,6 @@
 "use client";
 
+import { AddToCartButton } from "@/features/cart/ui/AddToCartButton";
 import { useProductByID } from "../model/useProductByID";
 
 type ProductDetailProps = {
@@ -22,6 +23,7 @@ export const ProductDetail = ({ productId }: ProductDetailProps) => {
       {!!data?.image_url.length && <img src={data.image_url} alt="picture" />}
       <h1>{data?.name}</h1>
       <p>Price: {data?.price}</p>
+      <AddToCartButton productId={+productId} />
     </div>
   );
 };
