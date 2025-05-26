@@ -13,13 +13,16 @@ export const Header = () => {
       <div className={"flex gap-4 items-center"}>
         {data ? (
           <>
-            <span>{data.user_name}</span>
+            <Link href="/cart">Корзина</Link>
+            <Link href="/profile">
+              <span>{data.user_name}</span>
+            </Link>
             <LogoutButton />
           </>
         ) : (
           <>
-            <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
+            <Link href="/login">Авторизация</Link>
+            <Link href="/register">Регистрация</Link>
           </>
         )}
       </div>
