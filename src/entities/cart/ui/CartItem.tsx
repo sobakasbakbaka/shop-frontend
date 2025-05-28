@@ -1,9 +1,13 @@
-import { CartItem as ICartItem } from "../model/types";
+import { type CartItem as CartItemType } from "../model/types";
 import Image from "next/image";
 import { useRemoveFromCart } from "@/features/cart/model/hooks/useRemoveFromCart";
 import { Button } from "@/shared/ui/button";
 
-export const CartItem = ({ item }: { item: ICartItem }) => {
+type CartItemProps = {
+  item: CartItemType;
+};
+
+export const CartItem = ({ item }: CartItemProps) => {
   const { mutate } = useRemoveFromCart();
   const product = item.products;
 
@@ -21,7 +25,9 @@ export const CartItem = ({ item }: { item: ICartItem }) => {
           ${product.price} × {item.quantity}
         </p>
       </div>
-      <Button onClick={() => mutate(product.id)}>Удалить</Button>
+      <Button onClick={() => mutate(product.id)} className={"px-4"}>
+        Удалить
+      </Button>
     </div>
   );
 };

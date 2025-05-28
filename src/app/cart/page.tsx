@@ -18,10 +18,10 @@ export default function CartPage() {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Корзина</h1>
       <div className="flex flex-col gap-4">
-        {data.map((item) => (
+        {data.items.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
-        <div className="text-right font-bold text-xl">Итого: $</div>
+        <div className="text-right font-bold text-xl">Итого: ${data.total}</div>
       </div>
     </div>
   );
