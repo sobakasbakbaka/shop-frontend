@@ -1,7 +1,9 @@
 "use client";
 
-import { AddToCartButton } from "@/features/cart/ui/AddToCartButton";
 import { useProductByID } from "../model/useProductByID";
+import { ProductImage } from "./ProductImage";
+import { ProductBuyBox } from "./ProductBuyBox";
+import { ProductDescription } from "./ProductDescription";
 
 type ProductDetailProps = {
   productId: string;
@@ -18,12 +20,22 @@ export const ProductDetail = ({ productId }: ProductDetailProps) => {
     return <div>Error...</div>;
   }
 
+  if (!data) {
+    return null;
+  }
+
   return (
-    <div>
-      {!!data?.image_url.length && <img src={data.image_url} alt="picture" />}
-      <h1>{data?.name}</h1>
-      <p>Price: {data?.price}</p>
-      <AddToCartButton productId={+productId} />
+    <div className={"flex flex-col gap-4"}>
+      <h1 className={"text-2xl font-bold mb-4"}>{data?.name}</h1>
+      <div className={"flex flex-row justify-between"}>
+        <ProductImage src={data.image_url} alt={data.name} />
+        <ProductBuyBox
+          stock={data.stock}
+          price={data.price}
+          productId={data.id}
+        />
+      </div>
+      <ProductDescription description={data.description} />
     </div>
   );
 };

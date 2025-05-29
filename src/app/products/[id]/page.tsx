@@ -1,4 +1,4 @@
-import { ProductDetail } from "@/features/product-detail/ui/ProductDetail";
+import { ProductDetail } from "@/features/product-detail";
 
 type ProductPageProps = {
   params: {
