@@ -6,6 +6,7 @@ import { useCart } from "../model/hooks/useCart";
 import { useMemo } from "react";
 import { useCartIncrement } from "../model/hooks/useCartIncrement";
 import { useCartDecrement } from "../model/hooks/useCartDecrement";
+import { CountButton } from "@/shared/ui/count-button";
 
 type AddToCartButtonProps = {
   productId: number;
@@ -35,17 +36,11 @@ export const AddToCartButton = ({ productId }: AddToCartButtonProps) => {
   };
 
   return !!productQuantity ? (
-    <div className={"flex items-center"}>
-      <Button className={"px-4"} onClick={handleDecrement}>
-        <p className={"text-1xl font-bold"}>-</p>
-      </Button>
-      <Button className={"px-4"} variant={"transparent"} disabled>
-        <p className={"text-1xl font-bold"}>{productQuantity}</p>
-      </Button>
-      <Button className={"px-4"} onClick={handleIncrement}>
-        <p className={"text-1xl font-bold"}>+</p>
-      </Button>
-    </div>
+    <CountButton
+      count={productQuantity}
+      increment={handleIncrement}
+      decrement={handleDecrement}
+    />
   ) : (
     <Button onClick={handleAddToCart} className={"px-4"}>
       {isPending ? "Добавляем..." : "В корзину"}
