@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["shop-s3.onrender.com"],
+    domains: ["pub-0603af3864bd4eafa9c388923753a1bb.r2.dev"],
   },
 };
 
