@@ -22,7 +22,7 @@ export const CartItem = ({ item }: CartItemProps) => {
       />
       <div className="flex-1">
         <Link href={`/products/${product.id}`}>
-          <h3 className="font-bold">{product.name || "Без названия"}</h3>
+          <h3 className="font-bold line-clamp-1">{product.name}</h3>
         </Link>
         <p>
           ${product.price} × {item.quantity}

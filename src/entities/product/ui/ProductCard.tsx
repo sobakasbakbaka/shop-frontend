@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Product } from "../model/types";
 import Image from "next/image";
+import { AddToCartButton } from "@/features/cart/ui/AddToCartButton";
 
 type ProductCardProps = {
   product: Product;
@@ -25,9 +26,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             />
           )}
         </div>
-        <div className={"pt-4"}>
-          <p className={"text-lg font-semibold"}>{product.name}</p>
-          <p className={"mt-2 text-xl font-bold"}>${product.price}</p>
+        <div className={"pt-4 flex flex-col gap-1"}>
+          <p className={"text-lg font-semibold line-clamp-1"}>{product.name}</p>
+          <p className={"text-xl font-bold"}>${product.price}</p>
+          <AddToCartButton productId={product.id} className={"w-fit"} />
         </div>
       </div>
     </Link>

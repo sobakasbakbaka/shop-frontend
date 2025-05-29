@@ -10,9 +10,13 @@ import { CountButton } from "@/shared/ui/count-button";
 
 type AddToCartButtonProps = {
   productId: number;
+  className?: string;
 };
 
-export const AddToCartButton = ({ productId }: AddToCartButtonProps) => {
+export const AddToCartButton = ({
+  productId,
+  className,
+}: AddToCartButtonProps) => {
   const { mutate, isPending } = useAddToCart();
   const { data } = useCart();
   const { mutate: increment } = useCartIncrement(productId);
@@ -42,7 +46,7 @@ export const AddToCartButton = ({ productId }: AddToCartButtonProps) => {
       decrement={handleDecrement}
     />
   ) : (
-    <Button onClick={handleAddToCart} className={"px-4"}>
+    <Button onClick={handleAddToCart} className={`px-4 ${className}`}>
       {isPending ? "Добавляем..." : "В корзину"}
     </Button>
   );
