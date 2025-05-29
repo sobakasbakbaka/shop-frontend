@@ -16,7 +16,7 @@ export const ProductImage = ({ src, alt }: ProductImageProps) => {
       width={300}
       height={300}
       alt={alt}
-      className={"object-contain"}
+      className={"object-contain rounded-lg"}
     />
   );
 };
