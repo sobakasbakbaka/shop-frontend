@@ -1,11 +1,4 @@
-export type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image_url: string;
-  description: string;
-  stock: number;
-};
+import { Product } from "@/entities/product/model/types";
 
 export type CartItem = {
   id: number;

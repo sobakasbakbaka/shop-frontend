@@ -21,8 +21,6 @@ export default function CartPage() {
     return <div>Корзина пуста</div>;
   }
 
-  console.log(!!data.items.length);
-
   const handleClick = () => {
     mutate();
   };
