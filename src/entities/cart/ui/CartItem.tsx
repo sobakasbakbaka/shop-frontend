@@ -2,6 +2,7 @@ import { type CartItem as CartItemType } from "../model/types";
 import Image from "next/image";
 import { useRemoveFromCart } from "@/features/cart/model/hooks/useRemoveFromCart";
 import { Button } from "@/shared/ui/button";
+import Link from "next/link";
 
 type CartItemProps = {
   item: CartItemType;
@@ -20,7 +21,9 @@ export const CartItem = ({ item }: CartItemProps) => {
         height={80}
       />
       <div className="flex-1">
-        <h3 className="font-bold">{product.name || "Без названия"}</h3>
+        <Link href={`/products/${product.id}`}>
+          <h3 className="font-bold">{product.name || "Без названия"}</h3>
+        </Link>
         <p>
           ${product.price} × {item.quantity}
         </p>
