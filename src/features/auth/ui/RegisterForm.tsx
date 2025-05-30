@@ -29,7 +29,7 @@ export const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit} className={"flex flex-col gap-4 w-[300px]"}>
       <Input
-        placeholder={"User Name"}
+        placeholder={"Как вас зовут?"}
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
@@ -40,7 +40,7 @@ export const RegisterForm = () => {
       />
       <Input
         type={"password"}
-        placeholder={"Password"}
+        placeholder={"Придумайте пароль"}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />

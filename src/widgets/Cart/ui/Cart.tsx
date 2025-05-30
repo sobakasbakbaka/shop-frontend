@@ -1,8 +1,8 @@
 "use client";
 
-import { useCart } from "@/features/cart/model/hooks/useCart";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
+import { useCart } from "@/features/cart/model/hooks/useCart";
 import { CartList } from "./__components/CartList";
 import { CartSummary } from "./__components/CartSummary";
 
