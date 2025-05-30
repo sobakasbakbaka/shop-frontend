@@ -1,4 +1,5 @@
 import { AddToCartButton } from "@/features/cart/ui/AddToCartButton";
+import { Box } from "@/shared/ui/box";
 
 type ProductBuyBoxProps = {
   price: number;
@@ -12,9 +13,7 @@ export const ProductBuyBox = ({
   productId,
 }: ProductBuyBoxProps) => {
   return (
-    <div
-      className={"w-80 h-fit p-4 flex flex-col gap-2 bg-slate-100 rounded-2xl"}
-    >
+    <Box>
       {stock === 0 ? (
         <p className="text-2xl font-bold">Товар закончился :{"("}</p>
       ) : (
@@ -23,6 +22,6 @@ export const ProductBuyBox = ({
           <AddToCartButton productId={+productId} />
         </>
       )}
-    </div>
+    </Box>
   );
 };

@@ -7,6 +7,7 @@ import { MouseEvent, useMemo } from "react";
 import { useCartIncrement } from "../model/hooks/useCartIncrement";
 import { useCartDecrement } from "../model/hooks/useCartDecrement";
 import { CountButton } from "@/shared/ui/count-button";
+import { useRemoveFromCart } from "../model/hooks/useRemoveFromCart";
 
 type AddToCartButtonProps = {
   productId: number;
@@ -21,6 +22,7 @@ export const AddToCartButton = ({
   const { data } = useCart();
   const { mutate: increment } = useCartIncrement(productId);
   const { mutate: decrement } = useCartDecrement(productId);
+  const { mutate: deleteProduct } = useRemoveFromCart();
 
   const productInfo = useMemo(() => {
     const product = data?.items.filter((item) => item.product_id === productId);
@@ -43,11 +45,16 @@ export const AddToCartButton = ({
 
   const handleDecrement = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    decrement({ quantity: productInfo.quantity });
+    if (productInfo.quantity === 1) {
+      deleteProduct(productId);
+    } else {
+      decrement({ quantity: productInfo.quantity });
+    }
   };
 
   return !!productInfo.quantity ? (
     <CountButton
+      minValue={0}
       maxValue={productInfo.stock}
       count={productInfo.quantity}
       increment={handleIncrement}
